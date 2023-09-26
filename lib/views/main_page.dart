@@ -84,7 +84,7 @@ class _MainPageState extends State<MainPage> {
                           child: Center(
                             child: Text(
                               QuizDb.quizData[queNo]['options'][index],
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 23,
                               ),
                             ),

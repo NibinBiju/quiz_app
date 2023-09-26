@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app_project/views/bottom_navi_page.dart';
+import 'package:quiz_app_project/views/main_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
