@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app_project/db/quizdata_db.dart';
+import 'package:quiz_app_project/views/score_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -22,7 +23,7 @@ class _MainPageState extends State<MainPage> {
         width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/image/Android Large - 10.png'),
+                image: AssetImage('assets/image/26539478_7234229.jpg'),
                 fit: BoxFit.cover)),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 100),
@@ -65,10 +66,9 @@ class _MainPageState extends State<MainPage> {
                         onTap: () {
                           setState(() {
                             value = index;
-                            value == QuizDb.quizData[queNo]['answer'];
-                            print(value);
-                            //     ? score++
-                            //     : print(value);
+                            value == QuizDb.quizData[queNo]['answer']
+                                ? score++
+                                : print(value);
                           });
                         },
                         child: Container(
@@ -104,6 +104,17 @@ class _MainPageState extends State<MainPage> {
         onTap: () {
           setState(() {
             queNo++;
+            value = 5;
+            queCount++;
+            if (queCount > 8) {
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return ScorePage(
+                    score: score,
+                  );
+                },
+              ));
+            }
           });
         },
         child: Container(
