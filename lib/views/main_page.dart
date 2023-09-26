@@ -9,12 +9,13 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  int queNo = 0;
+  int? value;
+  int score = 0;
+  int? ans;
+  int queCount = 0;
   @override
   Widget build(BuildContext context) {
-    int queNo = 0;
-    int? value;
-    int score = 0;
-
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -64,10 +65,10 @@ class _MainPageState extends State<MainPage> {
                         onTap: () {
                           setState(() {
                             value = index;
+                            value == QuizDb.quizData[queNo]['answer'];
                             print(value);
-                            value == QuizDb.quizData[queNo]['answer']
-                                ? score++
-                                : print(value);
+                            //     ? score++
+                            //     : print(value);
                           });
                         },
                         child: Container(
@@ -99,30 +100,23 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
       ),
-      // bottomNavigationBar: InkWell(
-      //   onTap: () {
-      //     setState(() {
-      //       queNo++;
-      //     });
-      //   },
-      //   child: Container(
-      //     height: 50,
-      //     color: const Color.fromARGB(255, 102, 182, 247),
-      //     child: Row(
-      //       mainAxisAlignment: MainAxisAlignment.center,
-      //       children: [
-      //         Text('Next'),
-      //         Icon(Icons.arrow_forward_sharp),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          queNo++;
-          setState(() {});
+      bottomNavigationBar: InkWell(
+        onTap: () {
+          setState(() {
+            queNo++;
+          });
         },
-        child: Icon(Icons.refresh),
+        child: Container(
+          height: 50,
+          color: const Color.fromARGB(255, 102, 182, 247),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Next'),
+              Icon(Icons.arrow_forward_sharp),
+            ],
+          ),
+        ),
       ),
     );
   }
